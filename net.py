@@ -36,14 +36,14 @@ decoder = nn.Sequential(
 )
 
 vgg = nn.Sequential(
-    nn.Conv2d(3, 3, (1, 1)),
+    nn.Conv2d(3, 3, (1, 1)), # 1 x 1 initial convolution.
     nn.ReflectionPad2d((1, 1, 1, 1)),
-    nn.Conv2d(3, 64, (3, 3)),
+    nn.Conv2d(3, 64, (3, 3)), # nn.conv2d(in_channels, out_channels, (kernel_size))
     nn.ReLU(),  # relu1-1
     nn.ReflectionPad2d((1, 1, 1, 1)),
     nn.Conv2d(64, 64, (3, 3)),
     nn.ReLU(),  # relu1-2
-    nn.MaxPool2d((2, 2), (2, 2), (0, 0), ceil_mode=True),
+    nn.MaxPool2d((2, 2), (2, 2), (0, 0), ceil_mode=True), # MaxPool2d((kernel_size), stride, padding, ceil_mode=use 'ceil' when true else 'floor')
     nn.ReflectionPad2d((1, 1, 1, 1)),
     nn.Conv2d(64, 128, (3, 3)),
     nn.ReLU(),  # relu2-1
